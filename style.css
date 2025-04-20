@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #4a90e2; /* Biru */
+    --secondary-color: #50e3c2; /* Hijau Mint */
+    --background-color: #f4f7f6;
+    --card-background: #ffffff;
+    --text-color: #333;
+    --timer-color: #d0021b; /* Merah untuk waktu */
+    --button-hover: #357abd;
+    --progress-bg: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: var(--card-background);
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.reminder-card {
+    background-color: #fdfdfd; /* Sedikit beda dari container */
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reminder-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
+
+.reminder-card .icon {
+    font-size: 3em;
+    margin-bottom: 10px;
+    line-height: 1;
+     /* Animasi ikon sederhana */
+    animation: bounce 2s infinite ease-in-out;
+    display: inline-block; /* Agar animasi bekerja */
+}
+
+/* Animasi sedikit memantul untuk ikon */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.reminder-card h2 {
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.reminder-card.water h2 {
+    color: var(--primary-color); /* Warna H2 air beda */
+}
+
+.reminder-card p {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.timer {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: var(--timer-color);
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px; /* Tombol lebih bulat */
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 400;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 15px; /* Jarak ke progress bar */
+}
+
+button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+
+button:active {
+     transform: scale(0.98);
+}
+
+.reminder-card.break button {
+    background-color: var(--secondary-color);
+}
+
+.reminder-card.break button:hover {
+    background-color: #48c9b0; /* Hover hijau sedikit lebih gelap */
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    width: 100%;
+    background-color: var(--progress-bg);
+    border-radius: 5px;
+    height: 10px;
+    overflow: hidden; /* Agar progress bar tetap di dalam container */
+}
+
+.progress-bar {
+    height: 100%;
+    width: 100%; /* Mulai dari penuh */
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 1s linear; /* Transisi halus saat waktu berkurang */
+}
+
+.reminder-card.break .progress-bar {
+     background-color: var(--secondary-color);
+}
+
+/* Animasi saat pengingat muncul */
+.reminder-active {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7); } /* Warna Biru */
+    70% { box-shadow: 0 0 0 15px rgba(74, 144, 226, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0); }
+}
+
+.reminder-card.break.reminder-active {
+    animation-name: pulse-break; /* Animasi beda untuk istirahat */
+}
+
+@keyframes pulse-break {
+    0% { box-shadow: 0 0 0 0 rgba(80, 227, 194, 0.7); } /* Warna Hijau Mint */
+    70% { box-shadow: 0 0 0 15px rgba(80, 227, 194, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(80, 227, 194, 0); }
+}
+
+/* Pengaturan Suara */
+.settings {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.settings label {
+    margin-right: 5px;
+}
+
+/* Responsif Sederhana */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    .timer {
+        font-size: 2em;
+    }
+     .reminder-card .icon {
+        font-size: 2.5em;
+    }
+}

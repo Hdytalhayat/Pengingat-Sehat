@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💧 Pengingat Minum & Istirahat ☕</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon sederhana (emoji) untuk tab yang di-pin -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💧</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <h1>Pengingat Sehat</h1>
+        <p class="subtitle">Jangan lupa jaga kesehatan saat bekerja!</p>
+
+        <div class="reminder-card water">
+            <div class="icon">💧</div>
+            <h2>Minum Air</h2>
+            <p>Pengingat berikutnya dalam:</p>
+            <div class="timer" id="water-timer">--:--</div>
+            <button id="reset-water">Saya Sudah Minum!</button>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="water-progress"></div>
+            </div>
+        </div>
+
+        <div class="reminder-card break">
+            <div class="icon">☕</div> <!-- Bisa diganti ikon mata -->
+            <h2>Istirahat Mata</h2>
+            <p>Istirahat berikutnya dalam:</p>
+            <div class="timer" id="break-timer">--:--</div>
+            <button id="reset-break">Saya Sudah Istirahat!</button>
+             <div class="progress-bar-container">
+                <div class="progress-bar" id="break-progress"></div>
+            </div>
+        </div>
+
+        <div class="settings">
+             <label for="enable-sound">Suara Notifikasi:</label>
+             <input type="checkbox" id="enable-sound" checked>
+        </div>
+
+    </div>
+
+    <!-- Elemen Audio (tersembunyi) -->
+    <audio id="reminder-sound" src="notification.mp3" preload="auto"></audio>
+    <!-- Ganti notification.mp3 dengan file suara Anda atau gunakan link online jika ada -->
+    <!-- Contoh sumber suara bebas royalti: https://pixabay.com/sound-effects/search/notification/ -->
+    <!-- Jika tidak punya file suara, bisa dihapus dan hanya andalkan notifikasi visual -->
+
+    <script src="script.js"></script>
+</body>
+</html>
